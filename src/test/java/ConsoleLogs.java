@@ -1,6 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v85.log.Log;
+import org.openqa.selenium.devtools.v156.log.Log;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -10,7 +11,7 @@ public class ConsoleLogs {
 
     @BeforeClass
     public void setup(){
-        WebDriverManager.edgedriver().setup();
+       // WebDriverManager.edgedriver().setup();
         driver = new EdgeDriver();
         driver.manage().window().maximize();
     }

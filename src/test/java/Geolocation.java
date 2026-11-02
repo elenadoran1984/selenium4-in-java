@@ -1,7 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v118.emulation.Emulation;
+import org.openqa.selenium.devtools.v156.emulation.Emulation;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -34,12 +34,19 @@ public class Geolocation {
     }
 
     @Test
-    public void mockGeoLocation_DevTools(){
+    public void mockGeoLocation_DevTools() {
         DevTools devTools = driver.getDevTools();
         devTools.createSession();
-        devTools.send(Emulation.setGeolocationOverride(Optional.of(52.5043),
-                Optional.of(13.4501),
-                Optional.of(1)));
+
+        devTools.send(Emulation.setGeolocationOverride(
+                Optional.of(52.5043),  // Latitude
+                Optional.of(13.4501),  // Longitude
+                Optional.of(1.0),      // Accuracy
+                Optional.empty(),      // Altitude
+                Optional.empty(),      // Altitude accuracy
+                Optional.empty(),      // Heading
+                Optional.empty()       // Speed
+        ));
         driver.get("https://my-location.org/");
     }
 }

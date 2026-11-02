@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.testng.annotations.BeforeMethod;
@@ -20,13 +21,15 @@ public class Screenshots {
     public void setUp(){
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
+//        WebDriverManager.chromedriver().setup();
+//        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://applitools.com/");
     }
 
     @Test
     public void takeWebElementScreenshot() throws IOException {
-        WebElement nextGenerationPlatform = driver.findElement(By.cssSelector("#post-8 h1"));
+        WebElement nextGenerationPlatform = driver.findElement(By.xpath("/html/body/section[6]/div/div/div[1]/h2"));
         File source = nextGenerationPlatform.getScreenshotAs(OutputType.FILE);
         File destination = new File("Next Generation Platform.png");
         FileHandler.copy(source, destination);
@@ -34,7 +37,7 @@ public class Screenshots {
 
     @Test
     public void takeWebElementPageSectionScreenshot() throws IOException {
-        WebElement applitoolsPageSection = driver.findElement(By.cssSelector("#post-8>div.wp-block-group.pt-default.pb-default.is-layout-flow.wp-block-group-is-layout-flow"));
+        WebElement applitoolsPageSection = driver.findElement(By.xpath("/html/body/section[6]/div"));
         File source = applitoolsPageSection.getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(source, new File("Applitools Page Section.png"));
     }
