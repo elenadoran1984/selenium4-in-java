@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Parallel Methods Suite"
+       parallel="methods"
+       thread-count="2">
+
+    <test name="Relative Locators">
+
+        <classes>
+            <class name="RelativeLocators">
+
+                <methods>
+                    <include name="testRelativeLocator"/>
+                    <include name="testListOfElements"/>
+                </methods>
+
+            </class>
+        </classes>
+
+    </test>
+
+</suite>
