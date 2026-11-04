@@ -8,11 +8,16 @@
     <test name="Regression Tests">
         <classes>
 
-            <class name="Screenshots"/>
-            <class name="Geolocation"/>
             <class name="ConsoleLogs"/>
+            <class name="ElementPositionWithGetRect"/>
+            <class name="Geolocation"/>
+            <class name="NetworkConditions"/>
+            <class name="RelativeLocators"/>
+            <class name="Screenshots"/>
+            <class name="WindowAndTabManagement"/>
 
         </classes>
     </test>
 
 </suite>
+<!--mvn clean test "-DsuiteXmlFile=testng-parallel.xml"-->

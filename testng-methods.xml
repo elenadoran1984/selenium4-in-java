@@ -21,3 +21,4 @@
     </test>
 
 </suite>
+<!--mvn clean test "-DsuiteXmlFile=testng-methods.xml"-->

@@ -3,6 +3,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v156.network.Network;
 import org.openqa.selenium.devtools.v156.network.model.ConnectionType;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -49,5 +50,10 @@ public class NetworkConditions {
     public void doNotEnableRexJonesII(){
         driver.get("https://www.rexjones2.com/");
         System.out.println("Do Not Enable Network: " + driver.getTitle());
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        driver.quit();
     }
 }

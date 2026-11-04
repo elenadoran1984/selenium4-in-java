@@ -1,8 +1,7 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v156.log.Log;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -35,5 +34,10 @@ public class ConsoleLogs {
 
         //Load The Aut
         driver.get("https://the-internet.herokuapp.com/broken_images");
+    }
+
+    @AfterClass
+    public void tearDown(){
+        driver.quit();
     }
 }

@@ -2,6 +2,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v156.emulation.Emulation;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -48,5 +49,10 @@ public class Geolocation {
                 Optional.empty()       // Speed
         ));
         driver.get("https://my-location.org/");
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        driver.quit();
     }
 }

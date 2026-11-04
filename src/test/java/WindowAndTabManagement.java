@@ -23,11 +23,6 @@ public class WindowAndTabManagement {
         System.out.println("Title: " + driver.getTitle());
     }
 
-    @AfterMethod
-    public void tearDown(){
-        driver.quit();
-    }
-
     @Test
     public void testNewWindowTab() throws InterruptedException {
         //WebDriver newWindow = driver.switchTo().newWindow(WindowType.TAB);
@@ -59,5 +54,10 @@ public class WindowAndTabManagement {
         driver.findElement(By.id("sbox")).sendKeys("geaca");
         driver.findElement(By.className("headerSearchButton")).click();
         System.out.println("Title: " + driver.getTitle());
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        driver.quit();
     }
 }

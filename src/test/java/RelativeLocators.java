@@ -27,11 +27,6 @@ public class RelativeLocators {
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 
-    @AfterMethod
-    public void tearDown(){
-        driver.quit();
-    }
-
     @Test
     public void testRelativeLocator() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -71,5 +66,10 @@ public class RelativeLocators {
         for (WebElement socialMedia : allsocialMedia){
             System.out.println(socialMedia.getAttribute("href"));
         }
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        driver.quit();
     }
     }
