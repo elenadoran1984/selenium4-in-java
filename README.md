@@ -16,7 +16,7 @@ Chrome DevTools Protocol
 
 **Setup Environment:**
 
-Java SE 17+ 
+Java 21 
 
 IntelliJ
 
