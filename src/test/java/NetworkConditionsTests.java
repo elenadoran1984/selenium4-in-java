@@ -1,28 +1,37 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v156.network.Network;
 import org.openqa.selenium.devtools.v156.network.model.ConnectionType;
+import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.DriverFactory;
 
 import java.util.Optional;
 
-public class NetworkConditions {
-    ChromeDriver driver;
+public class NetworkConditionsTests {
+    WebDriver driver;
     DevTools devTools;
 
     @BeforeMethod
-    public void seUp(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+    public void setUp() {
+        driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
-        devTools = driver.getDevTools();
+
+        if (driver instanceof ChromeDriver) {
+            devTools = ((ChromeDriver) driver).getDevTools();
+        }
     }
 
     @Test
-    public void enableSlowWikipedia() {
+    public void testEnableSlowWikipedia() {
+
+        if (!(driver instanceof ChromeDriver)) {
+            throw new SkipException("DevTools network emulation is supported only in Chrome");
+        }
+
         devTools.createSession();
         devTools.send(Network.enable(
                 Optional.empty(),
@@ -45,9 +54,8 @@ public class NetworkConditions {
         System.out.println("Enable Slow Network: " + driver.getTitle());
     }
 
-
     @Test
-    public void doNotEnableRexJonesII(){
+    public void testDoNotEnableRexJonesII(){
         driver.get("https://www.rexjones2.com/");
         System.out.println("Do Not Enable Network: " + driver.getTitle());
     }

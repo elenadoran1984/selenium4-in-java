@@ -6,7 +6,7 @@
     <test name="Relative Locators">
 
         <classes>
-            <class name="RelativeLocators"/>
+            <class name="RelativeLocatorsTests"/>
         </classes>
 
     </test>

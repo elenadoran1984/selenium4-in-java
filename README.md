@@ -9,7 +9,7 @@ Managing Windows and Managing Tabs
 
 Element Position with getRect()
 
-Screenshots
+ScreenshotsTests
 
 Chrome DevTools Protocol
 

@@ -8,13 +8,13 @@
     <test name="Regression Tests">
         <classes>
 
-            <class name="ConsoleLogs"/>
-            <class name="ElementPositionWithGetRect"/>
-            <class name="Geolocation"/>
-            <class name="NetworkConditions"/>
-            <class name="RelativeLocators"/>
-            <class name="Screenshots"/>
-            <class name="WindowAndTabManagement"/>
+            <class name="ConsoleLogsTests"/>
+            <class name="ElementPositionWithGetRectTests"/>
+            <class name="GeolocationTests"/>
+            <class name="NetworkConditionsTests"/>
+            <class name="RelativeLocatorsTests"/>
+            <class name="ScreenshotsTests"/>
+            <class name="WindowAndTabManagementTests"/>
 
         </classes>
     </test>

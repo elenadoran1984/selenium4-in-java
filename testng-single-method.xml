@@ -6,7 +6,7 @@
     <test name="Relative Locator Test">
 
         <classes>
-            <class name="RelativeLocators">
+            <class name="RelativeLocatorsTests">
                 <methods>
                     <include name="testRelativeLocator"/>
                 </methods>

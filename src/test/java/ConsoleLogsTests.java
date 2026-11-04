@@ -1,24 +1,35 @@
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.HasDevTools;
 import org.openqa.selenium.devtools.v156.log.Log;
-import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import utils.DriverFactory;
 
-public class ConsoleLogs {
-    EdgeDriver driver;
+
+public class ConsoleLogsTests {
+    WebDriver driver;
 
     @BeforeClass
-    public void setup(){
-       // WebDriverManager.edgedriver().setup();
-        driver = new EdgeDriver();
+    public void setup() {
+        driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
     }
 
     @Test
-    public void viewBrowserConsoleLogs(){
+    public void testViewBrowserConsoleLogs() {
+
+        if (!(driver instanceof HasDevTools)) {
+            throw new SkipException(
+                    "CDP is not supported by this browser"
+            );
+        }
+
         //Get The DevTools & Create A Session
-        DevTools devTools = driver.getDevTools();
+        DevTools devTools =
+                ((HasDevTools) driver).getDevTools();
         devTools.createSession();
 
         //Enable The Console Logs
@@ -31,7 +42,6 @@ public class ConsoleLogs {
             System.out.println("Text: " + logEntry.getText());
             System.out.println("Broken URL: " + logEntry.getUrl());
         });
-
         //Load The Aut
         driver.get("https://the-internet.herokuapp.com/broken_images");
     }
